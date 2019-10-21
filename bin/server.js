@@ -1,9 +1,9 @@
 const app = require('../src/app');
-const http = require('http');
+const http = require('http'); // dependencias para o servidr http
 const debug = require('debug')('nodestr:server');
 
 // PORT // based on express-generator
-function normalizePort(val) {
+function normalizePort(val) { //função para normalizar a porta em que vamos expor nossa aplicação.
     const port = parseInt(val, 10); // era identação do codigo
 
     if (isNaN(port)) {
@@ -17,6 +17,7 @@ function normalizePort(val) {
         return false;
     }
 }
+
 const port = normalizePort(process.env.PORT || 3000);
 app.set('port', port);
 
@@ -44,14 +45,14 @@ function onError(error) {
     }
 }
 // listener handler
-function onListening() {
+function onListening() { // o listener do servidor
     const addr = server.address();
     const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
 
 // server
-const server = http.createServer(app);
+const server = http.createServer(app); // por fim colocando ele em pe
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

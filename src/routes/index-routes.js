@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); // la no server ele definou '/' como a primeira rota, agora o index-routes é quem cuida dela
 const router = express.Router();
 
 router.get('/', (req, res, next) => { 
