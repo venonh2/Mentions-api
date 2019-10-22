@@ -5,6 +5,8 @@ require('dotenv').config();
 //app
 const app = express();
 
+app.use(express.json()); // esta incluindo apra ter controle que oque seja enviado apra  obanco seja modelo json
+app.use(express.urlencoded({extended: true})) // mesma coisa que acima, e a validação é feito no mentions-routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
