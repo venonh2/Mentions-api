@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const Mentions = mongoose.model('Mentions');
-
+//const mongoose = require('mongoose');
+//const Mentions = mongoose.model('Mentions');
+const repository = require('../repositories/mentions-repository');
 
 //list
 exports.listMentions = async (req, res) => {
-    try {
-        const data = await Mentions.find({}, `friend mention -_id`); // antes estava só find({}), ou seja traga tudo agor estamos dizendo traga só esses dois
+    try {const data = await repository.listMentions(); // veja agora só chama a fução de listar que foi movida
+        
         res.status(200).send(data); // veja o '-_id' diz, cara não traga ele, serve para outras tbm
     } catch (e) {
         res.status(500).send({message: 'Falha ao carregar as menções' });
