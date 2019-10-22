@@ -8,7 +8,7 @@ exports.listMentions = async (req, res) => {
         const data = await Mentions.find({});
         res.status(200).send(data);
     } catch (e) {
-        res.status(500).send({ message: 'Falha ao carregar as emnções' });
+        res.status(500).send({message: 'Falha ao carregar as menções' });
     }
 
 };
@@ -17,11 +17,11 @@ exports.listMentions = async (req, res) => {
 exports.createMention = async(req, res) => {
     try {
         const mention = new Mentions({
-            friend: req.boby.friend,
+            friend: req.body.friend, // atenção, estava errado
             mention: req.body.mention
         });
 
-        console.log(mention)
+        console.log(mention);
 
         await mention.save();
 

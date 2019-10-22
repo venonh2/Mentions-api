@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 //Database, configurando para conectar no atlas
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, { // veja ele dando permissão para criar classes e alterar
     useNewUrlParser: true,
-    //   useFindAndModify: true,
-    //   useCreateIndex: true
+      useFindAndModify: true,
+       useCreateIndex: true
 });
 
 const db = mongoose.connection;
@@ -37,6 +37,7 @@ process.on('SIGINT', () => {
 });
 // load models,  esta importando o mentions para que todo o programa passo usalo
 const Mentions = require('./models/mentions');
+//app.use('/mentions', Mentions)
 
 // LOad routes
 const indexRoutes = require('./routes/index-routes');
