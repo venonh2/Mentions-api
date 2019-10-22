@@ -35,6 +35,21 @@ exports.createMention = async (req, res) => {
         } catch (e) {
             res.status(500).send({ message: 'Falha ao cadastrar a menção' });
         };
-    
+};
+// update
+exports.updateMention = async (req, res) => {
+    const { errors } = validationResult(req);
+    if(errors.length > 0){
+        return res.status(400).send({ message: errors })
+    };
 
+    try{
+        //const data = awat.repository.updateMentions(req.params.id, req.body); // veja que é passado um id e um valor parao body, ou seja o objeto que sera atualziado
+        await repository.updateMention(req.params.id, req.body);
+         res.status(200).send({ //return na frente talvez
+            message: 'Menção atualizada com sucesso'
+        });
+    } catch(e){
+            res.status(500).send({message: 'Falha ao atualizar a menção'}) // return na frente tabez
+    };
 };

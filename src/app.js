@@ -13,8 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 //Database, configurando para conectar no atlas
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, { // veja ele dando permissão para criar classes e alterar
     useNewUrlParser: true,
-      useFindAndModify: true,
-       useCreateIndex: true
+      useFindAndModify: false,
+       useCreateIndex: true,
+       useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
