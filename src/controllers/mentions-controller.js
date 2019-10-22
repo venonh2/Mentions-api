@@ -16,14 +16,14 @@ exports.listMentions = async (req, res) => {
 // create
 exports.createMention = async(req, res) => {
     try {
-        const mention = new Mentions({
+        await repository.createMention({ // veja o repository só chama a criação mas ele aidna passo os parametros
             friend: req.body.friend, // atenção, estava errado
             mention: req.body.mention
         });
 
-        console.log(mention);
+      //  console.log(mention);
 
-        await mention.save();
+       // await mention.save();
 
         res.status(201).send({ message: 'Menção cadastrada com sucesso' });
     } catch (e) {
