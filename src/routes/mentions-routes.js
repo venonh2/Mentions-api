@@ -20,4 +20,6 @@ router.put('/:id', [
     check('mention').optional().isLength({ min: 20, max: 280 }).withMessage("A menção precisa ter no min 20 e no max 280 caracters")
 ], mentionsController.updateMention);
 
+router.delete('/:id', mentionsController.deleteMention); // sem checar nada pq  ?
+
 module.exports = router;

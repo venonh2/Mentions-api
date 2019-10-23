@@ -17,3 +17,8 @@ exports.updateMention = async(id, data) => {
         $set: data
     });
 };
+
+// deletando
+exports.deleteMention = async(id, data) => {
+    await Mentions.findOneAndRemove(id); // delete n seria melhor ?
+};
